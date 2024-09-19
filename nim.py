@@ -113,7 +113,7 @@ class NimAI():
         given the previous Q-value `old_q`, a current reward `reward`,
         and an estiamte of future rewards `future_rewards`.
 
-        Use the formula:
+        Using the formula:
 
         Q(s, a) <- old value estimate
                    + alpha * (new value estimate - old value estimate)
@@ -127,13 +127,13 @@ class NimAI():
 
     def best_future_reward(self, state):
         """
-        Given a state `state`, consider all possible `(state, action)`
+        Given a state `state`, considers all possible `(state, action)`
         pairs available in that state and return the maximum of all
         of their Q-values.
 
-        Use 0 as the Q-value if a `(state, action)` pair has no
+        Uses 0 as the Q-value if a `(state, action)` pair has no
         Q-value in `self.q`. If there are no available actions in
-        `state`, return 0.
+        `state`, returns 0.
         """
         n = Nim()
         actions = n.available_actions(state)
@@ -146,18 +146,15 @@ class NimAI():
 
     def choose_action(self, state, epsilon=True):
         """
-        Given a state `state`, return an action `(i, j)` to take.
+        Given a state `state`, returns action `(i, j)` to take.
 
-        If `epsilon` is `False`, then return the best action
+        If `epsilon` is `False`, then returns the best action
         available in the state (the one with the highest Q-value,
         using 0 for pairs that have no Q-values).
 
         If `epsilon` is `True`, then with probability
-        `self.epsilon` choose a random available action,
-        otherwise choose the best action available.
-
-        If multiple actions have the same Q-value, any of those
-        options is an acceptable return value.
+        `self.epsilon` chooses a random available action,
+        otherwise chooses the best action available.
         """
         if epsilon == False:
             state = tuple(state)
@@ -199,7 +196,7 @@ class NimAI():
 
 def train(n):
     """
-    Train an AI by playing `n` games against itself.
+    Trains an AI by playing `n` games against itself.
     """
 
     player = NimAI()
@@ -258,7 +255,7 @@ def train(n):
 
 def play(ai, human_player=None):
     """
-    Play human game against the AI.
+    Plays human game against the AI.
     `human_player` can be set to 0 or 1 to specify whether
     human player moves first or second.
     """
